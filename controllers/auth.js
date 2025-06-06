@@ -11,7 +11,7 @@ const register= async (req,res) => {
   const user = await User.create({...req.body }) 
   const token = user.createJWT() 
   
-  res
+ return res
   .status(StatusCodes.CREATED)
   .json({ user: {name:user.name }, token })
 } 
@@ -37,7 +37,7 @@ const isPasswordCorrect = await user.comparePassword(password)
  
 
 const token = user.createJWT()
-res.status(StatusCodes.OK).json({ user: { name: user.name }, token})
+return res.status(StatusCodes.OK).json({ user: { name: user.name }, token})
 };
 
 
